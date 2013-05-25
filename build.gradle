@@ -1,0 +1,9 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'maven'
+
+task wrapper(type: Wrapper){
+    gradleVersion = '1.6'
+}
+
+defaultTasks 'clean', 'build', 'install'
