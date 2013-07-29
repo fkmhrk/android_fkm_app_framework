@@ -16,13 +16,13 @@ repositories {
 }
 
 dependencies {
-    compile files("${System.getenv('ANDROID_HOME')}/extras/android/compatibility/v4/android-support-v4.jar")
+    compile files("${System.getenv('ANDROID_HOME')}/extras/android/support/v4/android-support-v4.jar")
     compile files("${System.getenv('ANDROID_HOME')}/platforms/android-8/android.jar")
 }
 
 install {
     repositories.mavenInstaller {
-        pom.version = '0.1'
+        pom.version = '0.2'
         pom.groupId = 'jp.fkmsoft.android'
         pom.artifactId = 'fkm_app_framework'
     }
