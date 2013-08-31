@@ -22,7 +22,7 @@ abstract public class BaseFragment<T extends UI, U extends App> extends Fragment
         if (context == null) { return; }
         
         ui = createUI(context);
-        app = createApp(context, ui);
+        app = createApp(savedInstanceState, context, ui);
     }
 
     /**
@@ -34,8 +34,10 @@ abstract public class BaseFragment<T extends UI, U extends App> extends Fragment
     
     /**
      * This method will be called in {@link BaseFragment#onCreate(Bundle)}
+     * @param savedInstanceState instance state. if not null, app must be restore 
      * @param context
+     * @param ui created ui instance
      * @return instance of U
      */
-    abstract protected U createApp(Context context, T ui);
+    abstract protected U createApp(Bundle savedInstanceState, Context context, T ui);
 }
