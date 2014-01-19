@@ -9,17 +9,16 @@ import android.support.v4.app.ListFragment;
 abstract public class BaseListFragment<T extends UI, U extends App> extends ListFragment {
     protected T ui;
     protected U app;
-    
+
     /*
      * (non-Javadoc)
-     * @see android.support.v4.app.Fragment#onCreate(android.os.Bundle)
+     * @see android.support.v4.app.Fragment#onActivityCreated(android.os.Bundle)
      */
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
         
         Context context = getActivity();
-        if (context == null) { return; }
         
         ui = createUI(context);
         app = createApp(savedInstanceState, context, ui);
