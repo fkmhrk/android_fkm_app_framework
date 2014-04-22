@@ -9,20 +9,19 @@ import android.support.v4.app.ListFragment;
 abstract public class BaseListFragment<T extends UI, U extends App> extends ListFragment {
     protected T ui;
     protected U app;
-    
+
     /*
      * (non-Javadoc)
-     * @see android.support.v4.app.Fragment#onCreate(android.os.Bundle)
+     * @see android.support.v4.app.Fragment#onActivityCreated(android.os.Bundle)
      */
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
         
         Context context = getActivity();
-        if (context == null) { return; }
         
         ui = createUI(context);
-        app = createApp(context, ui);
+        app = createApp(savedInstanceState, context, ui);
     }
 
     /**
@@ -34,8 +33,9 @@ abstract public class BaseListFragment<T extends UI, U extends App> extends List
     
     /**
      * This method will be called in {@link BaseListFragment#onCreate(Bundle)}
+     * @param savedInstanceState instance state. if not null, app must be restore
      * @param context
      * @return instance of U
      */
-    abstract protected U createApp(Context context, T ui);
+    abstract protected U createApp(Bundle savedInstanceState, Context context, T ui);
 }
