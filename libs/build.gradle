@@ -1,29 +1,29 @@
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'maven'
-
-task wrapper(type: Wrapper){
-    gradleVersion = '1.6'
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.9.+'
+    }
 }
 
-defaultTasks 'clean', 'build', 'install'
-
-sourceCompatibility=1.6
-targetCompatibility=1.6
+apply plugin: 'android-library'
+apply plugin: 'maven'
 
 repositories {
     mavenLocal()
 }
 
-dependencies {
-    compile files("${System.getenv('ANDROID_HOME')}/extras/android/support/v4/android-support-v4.jar")
-    compile files("${System.getenv('ANDROID_HOME')}/platforms/android-8/android.jar")
+uploadArchives {
+    repositories.mavenDeployer {
+        repository url: "file://$System.env.HOME/.m2/repository"
+        pom.version = '0.3.0'
+        pom.groupId = 'jp.fkmsoft.libs'
+        pom.artifactId = 'android-app-framework'
+    }
 }
 
-install {
-    repositories.mavenInstaller {
-        pom.version = '0.3'
-        pom.groupId = 'jp.fkmsoft.android'
-        pom.artifactId = 'fkm_app_framework'
-    }
+android {
+    compileSdkVersion 19
+    buildToolsVersion "19.0.3"
 }
