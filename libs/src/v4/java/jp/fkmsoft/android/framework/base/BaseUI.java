@@ -1,10 +1,11 @@
-package jp.fkmsoft.android.framework.base.v4;
+package jp.fkmsoft.android.framework.base;
 
 import java.lang.ref.WeakReference;
 
-import jp.fkmsoft.android.framework.dialog.v4.ProgressDialogFragment;
 import android.support.v4.app.Fragment;
 import android.view.View;
+
+import jp.fkmsoft.android.framework.dialog.ProgressDialogFragment;
 
 /**
  * Base class of UI

@@ -1,10 +1,11 @@
-package jp.fkmsoft.android.framework.base.v4;
+package jp.fkmsoft.android.framework.base;
 
 import jp.fkmsoft.android.framework.App;
 import jp.fkmsoft.android.framework.UI;
+
+import android.app.ListFragment;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.ListFragment;
 
 abstract public class BaseListFragment<T extends UI, U extends App> extends ListFragment {
     protected T ui;
@@ -25,14 +26,14 @@ abstract public class BaseListFragment<T extends UI, U extends App> extends List
     }
 
     /**
-     * This method will be called in {@link BaseListFragment#onCreate(Bundle)}
+     * This method will be called in {@link jp.fkmsoft.android.framework.base.BaseListFragment#onCreate(android.os.Bundle)}
      * @param context
      * @return instance of T
      */
     abstract protected T createUI(Context context);
     
     /**
-     * This method will be called in {@link BaseListFragment#onCreate(Bundle)}
+     * This method will be called in {@link jp.fkmsoft.android.framework.base.BaseListFragment#onCreate(android.os.Bundle)}
      * @param savedInstanceState instance state. if not null, app must be restore
      * @param context
      * @return instance of U
