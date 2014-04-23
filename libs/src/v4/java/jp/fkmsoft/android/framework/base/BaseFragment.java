@@ -1,4 +1,4 @@
-package jp.fkmsoft.android.framework.base.v4;
+package jp.fkmsoft.android.framework.base;
 
 import jp.fkmsoft.android.framework.App;
 import jp.fkmsoft.android.framework.UI;

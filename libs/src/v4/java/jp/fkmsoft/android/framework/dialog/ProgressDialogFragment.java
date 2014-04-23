@@ -1,4 +1,4 @@
-package jp.fkmsoft.android.framework.dialog.v4;
+package jp.fkmsoft.android.framework.dialog;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
