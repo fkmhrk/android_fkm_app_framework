@@ -32,20 +32,24 @@ artifacts {
 android {
     compileSdkVersion 19
     buildToolsVersion "19.0.3"
-    buildTypes {
-    }
+
     productFlavors {
         v4 {
-            uploadArchives.repositories.mavenDeployer.pom.artifactId += '_v4'
+            minSdkVersion 8
         }
         v11 {
-
+            minSdkVersion 11
         }
+    }
+}
+
+android.libraryVariants.all {variant ->
+    variant.javaCompile.doFirst {
+        def name = variant.productFlavors.get(0).name
+        uploadArchives.repositories.mavenDeployer.pom.artifactId += '_' + name
     }
 }
 
 dependencies {
     v4Compile 'com.android.support:support-v4:19.+'
 }
-
-//println assembleV4Debug
