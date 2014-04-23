@@ -1,0 +1,55 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.9.+'
+    }
+}
+
+apply plugin: 'android-library'
+apply plugin: 'maven'
+
+repositories {
+    mavenLocal()
+}
+
+
+uploadArchives {
+    repositories.mavenDeployer {
+        repository url: "file://$System.env.HOME/.m2/repository"
+
+        pom.version = '0.3.0'
+        pom.groupId = 'jp.fkmsoft.libs'
+        pom.artifactId = 'android-app-framework'
+    }
+}
+
+artifacts {
+    archives file('build/libs/libs.aar')
+}
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "19.0.3"
+
+    productFlavors {
+        v4 {
+            minSdkVersion 8
+        }
+        v11 {
+            minSdkVersion 11
+        }
+    }
+}
+
+android.libraryVariants.all {variant ->
+    variant.javaCompile.doFirst {
+        def name = variant.productFlavors.get(0).name
+        uploadArchives.repositories.mavenDeployer.pom.artifactId += '_' + name
+    }
+}
+
+dependencies {
+    v4Compile 'com.android.support:support-v4:19.+'
+}
