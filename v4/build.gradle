@@ -5,9 +5,9 @@ uploadArchives {
     repositories.mavenDeployer {
         repository url: "file://$System.env.HOME/.m2/repository"
 
-        pom.version = '0.5.0'
+        pom.version = '0.6.0'
         pom.groupId = 'jp.fkmsoft.libs'
-        pom.artifactId = 'android-app-framework'
+        pom.artifactId = 'android-app-framework-v4'
     }
 }
 
