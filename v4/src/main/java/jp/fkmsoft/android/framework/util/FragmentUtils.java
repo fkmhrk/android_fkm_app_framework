@@ -24,6 +24,7 @@ public class FragmentUtils {
     /**
      * Replaces with next fragment
      * @param manager Fragment manager
+     * @param containerId Container id
      * @param next The Fragment you want to replace with
      * @param addBackstack true if you want to add current fragment to backstack with tag ""
      * @param tag The tag for next fragment.
