@@ -1,11 +1,13 @@
 apply plugin: 'com.android.library'
 apply plugin: 'maven'
 
+def VERSION = '0.7.0'
+
 uploadArchives {
     repositories.mavenDeployer {
         repository url: "file://$System.env.HOME/.m2/repository"
 
-        pom.version = '0.6.0'
+        pom.version = VERSION
         pom.groupId = 'jp.fkmsoft.libs'
         pom.artifactId = 'android-app-framework-v4'
     }
