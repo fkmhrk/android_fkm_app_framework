@@ -15,8 +15,9 @@ android {
     compileSdkVersion 21
     buildToolsVersion "20.0.0"
     defaultConfig {
+        applicationId "jp.fkmsoft.libs.appframework"
         minSdkVersion 8
-        targetSdkVersion 21
+        targetSdkVersion 19
         versionCode 1
         versionName "1.0"
     }
