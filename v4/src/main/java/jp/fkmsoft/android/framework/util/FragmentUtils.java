@@ -1,5 +1,6 @@
 package jp.fkmsoft.android.framework.util;
 
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -53,5 +54,19 @@ public class FragmentUtils {
         }
         transaction.replace(containerId, next, tag);
         transaction.commit();
+    }
+
+    /**
+     * Dismisses dialog
+     * @param manager Fragment manager
+     * @param tag The tag for Dialog
+     */
+    public static void dismissDialog(FragmentManager manager, String tag) {
+        if (manager == null) { return; }
+        Fragment fragment = manager.findFragmentByTag(tag);
+        if (fragment == null) { return; }
+        if (!(fragment instanceof DialogFragment)) { return; }
+        DialogFragment dialog = (DialogFragment) fragment;
+        dialog.dismiss();
     }
 }
