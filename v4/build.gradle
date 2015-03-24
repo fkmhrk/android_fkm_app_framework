@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'maven'
 
-def VERSION = '0.7.0'
+def VERSION = '0.8.0'
 
 uploadArchives {
     repositories.mavenDeployer {
