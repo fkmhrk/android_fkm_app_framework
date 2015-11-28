@@ -62,11 +62,26 @@ public class FragmentUtils {
      * @param tag The tag for Dialog
      */
     public static void dismissDialog(FragmentManager manager, String tag) {
-        if (manager == null) { return; }
-        Fragment fragment = manager.findFragmentByTag(tag);
-        if (fragment == null) { return; }
-        if (!(fragment instanceof DialogFragment)) { return; }
-        DialogFragment dialog = (DialogFragment) fragment;
+        DialogFragment dialog = findDialogFragment(manager, tag);
+        if (dialog == null) { return; }
         dialog.dismiss();
+    }
+
+    /**
+     * Dismisses dialog that uses {@link DialogFragment#dismissAllowingStateLoss()}
+     * @param manager Fragment manager
+     * @param tag The tag for Dialog
+     */
+    public static void dismissDialogAllowingStateLoss(FragmentManager manager, String tag) {
+        DialogFragment dialog = findDialogFragment(manager, tag);
+        if (dialog == null) { return; }
+        dialog.dismissAllowingStateLoss();
+    }
+
+    private static DialogFragment findDialogFragment(FragmentManager manager, String tag) {
+        if (manager == null) { return null; }
+        Fragment fragment = manager.findFragmentByTag(tag);
+        if (fragment == null) { return null; }
+        return (fragment instanceof DialogFragment) ? (DialogFragment) fragment : null;
     }
 }
